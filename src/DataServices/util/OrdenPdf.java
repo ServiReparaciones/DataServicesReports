@@ -25,19 +25,23 @@ import net.sf.jasperreports.export.SimplePdfExporterConfiguration;
  */
 public class OrdenPdf {
 
-    public static Boolean geratedPdf(String DestinationPath) {
+    public static Boolean geratedPdf(String DestinationPath, Integer ORD_NUM_SIS) {
         Boolean exito = false;
         String path = OrdenPdf.class.getResource("/DataServices/rptm/rptmOrden.jrxml").getPath();
         try {
-            JasperReport jasperReport = JasperCompileManager.compileReport(path);
             ConnectionMysql connection = new ConnectionMysql();
 
-            // Parameters for report
+            /*JasperReport jasperReport
+                    = */
+            String jasperReport
+                    = JasperCompileManager.compileReportToFile(path);
             Map<String, Object> parameters = new HashMap<String, Object>();
-            parameters.put("ORD_NUM_SIS", 10009);
-            
+            parameters.put("ORD_NUM_SIS", ORD_NUM_SIS);
+
             JasperPrint print = JasperFillManager.fillReport(jasperReport,
                     parameters, connection.conectar());
+//            JasperPrint print = JasperFillManager.fillReport(jasperReport.replaceAll("jrxml", "jasper"),
+//                    parameters, connection.conectar());
 
             // PDF Exportor.
             JRPdfExporter exporter = new JRPdfExporter();
@@ -48,7 +52,7 @@ public class OrdenPdf {
 
             // ExporterOutput
             OutputStreamExporterOutput exporterOutput = new SimpleOutputStreamExporterOutput(
-                    DestinationPath);
+                    DestinationPath + "" + ORD_NUM_SIS + ".pdf");
             // Output
             exporter.setExporterOutput(exporterOutput);
 
@@ -58,7 +62,7 @@ public class OrdenPdf {
             exporter.exportReport();
             exito = true;
         } catch (JRException ex) {
-            System.out.println(">> Ex JasperReports "+ex.getMessage());
+            System.out.println(">> Ex JasperReports " + ex.getMessage());
         }
 
         return exito;

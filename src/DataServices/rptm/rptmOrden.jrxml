@@ -85,26 +85,23 @@ where ord.ORD_NUM_SIS = $P{ORD_NUM_SIS};]]>
 	<title>
 		<band height="108" splitType="Stretch">
 			<staticText>
-				<reportElement x="213" y="15" width="82" height="20" uuid="44545034-303a-43df-9d37-5d87979c3c25"/>
+				<reportElement x="307" y="2" width="82" height="20" uuid="44545034-303a-43df-9d37-5d87979c3c25"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="Courier" size="12" isBold="true"/>
 				</textElement>
-				<text><![CDATA[Num. Orden: ]]></text>
+				<text><![CDATA[Num. Orden ]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="292" y="15" width="110" height="20" forecolor="#000000" uuid="4f102839-fbca-43d6-a68c-82546441eecb"/>
+				<reportElement x="291" y="22" width="115" height="20" forecolor="#000000" uuid="4f102839-fbca-43d6-a68c-82546441eecb"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="Courier" size="12" isBold="true" isUnderline="false"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{ORD_NUM_SIS}]]></textFieldExpression>
 			</textField>
-			<staticText>
-				<reportElement x="241" y="35" width="125" height="20" uuid="ab365cc6-2aff-4562-a1ff-aa11b55febab"/>
-				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="Courier" size="12" isBold="true"/>
-				</textElement>
-				<text><![CDATA[SERVIREPARACIONES]]></text>
-			</staticText>
+			<image>
+				<reportElement x="0" y="0" width="287" height="108" uuid="b4ff6f96-86c9-47cb-a4e6-07dac4437227"/>
+				<imageExpression><![CDATA["/home/luis/NetBeansProjects/dbServices_1_8/DataServicesReports/src/DataServices/rptm/res/logo.png"]]></imageExpression>
+			</image>
 		</band>
 	</title>
 	<pageHeader>
